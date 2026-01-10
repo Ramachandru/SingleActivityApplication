@@ -1,10 +1,14 @@
 package com.example.singleactivityapp.ui.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.example.singleactivityapp.R
 import com.example.singleactivityapp.data.newtwork.User
 
 @SuppressLint("StateFlowValueCalledInComposition")
@@ -19,8 +23,11 @@ fun MaleListScreen(
     }
 
     val userList = maleListState.value.genderList
-    ShowingListOfUser(
-        userList = userList,
-        navigationToDetails = navigateToDetails
-    )
+    Column(modifier = Modifier.fillMaxSize()) {
+        AppToolBar("Male Only", R.drawable.female1)
+        ShowingListOfUser(
+            userList = userList,
+            navigationToDetails = navigateToDetails
+        )
+    }
 }

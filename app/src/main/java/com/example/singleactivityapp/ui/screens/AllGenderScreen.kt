@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -21,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.example.singleactivityapp.R
 import com.example.singleactivityapp.data.newtwork.User
 import com.example.singleactivityapp.ui.theme.Pink80
 import com.example.singleactivityapp.ui.theme.Purple80
@@ -38,19 +40,24 @@ fun AllGenderList(
     LaunchedEffect(Unit) {
         viewModel.loadData()
     }
-
-    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(20.dp)) {
-        Text(
-            text = "Increase ${clickedEvent.intValue}",
-            modifier = modifier
-                .background(color = Purple80)
-                .clickable {
-                    clickedEvent.intValue++
-                    viewModel.handleIntent(UserViewModel.UserIntent.IncreaseCount(clickedEvent.intValue))
-                }
-        )
-        val list = result.value.genderList
-        ShowingListOfUser(modifier = modifier, list, navigateToDetails)
+    Column(modifier = Modifier.fillMaxSize()) {
+        AppToolBar("All Gender", R.drawable.male1)
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(20.dp)
+        ) {
+            Text(
+                text = "Increase ${clickedEvent.intValue}",
+                modifier = modifier
+                    .background(color = Purple80)
+                    .clickable {
+                        clickedEvent.intValue++
+                        viewModel.handleIntent(UserViewModel.UserIntent.IncreaseCount(clickedEvent.intValue))
+                    }
+            )
+            val list = result.value.genderList
+            ShowingListOfUser(modifier = modifier, list, navigateToDetails)
+        }
     }
 }
 
