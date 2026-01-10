@@ -51,6 +51,7 @@ fun BottomBarNavigation(navHostController: NavHostController) {
                             inclusive = true
                         }
                         launchSingleTop = true
+                        restoreState = true
                     }
                 })
         }

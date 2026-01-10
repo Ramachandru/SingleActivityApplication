@@ -49,7 +49,7 @@ fun AllGenderList(
                     viewModel.handleIntent(UserViewModel.UserIntent.IncreaseCount(clickedEvent.intValue))
                 }
         )
-        val list = result.value.userList?.results
+        val list = result.value.genderList
         ShowingListOfUser(modifier = modifier, list, navigateToDetails)
     }
 }

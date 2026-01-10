@@ -20,7 +20,14 @@ class UserViewModel @Inject constructor(private val userUseCase: UserUseCase) :
             when {
                 it.isSuccess -> {
                     it.getOrNull()
-                        ?.let { userList -> updateUiState(uiState.value.copy(userList = userList[0])) }
+                        ?.let { userList ->
+                            updateUiState(
+                                uiState.value.copy(
+                                    genderList = userList[0].results,
+                                    error = ""
+                                )
+                            )
+                        }
                 }
 
                 it.isFailure -> {
@@ -39,7 +46,14 @@ class UserViewModel @Inject constructor(private val userUseCase: UserUseCase) :
                         when {
                             it.isSuccess -> {
                                 it.getOrNull()
-                                    ?.let { userList -> updateUiState(uiState.value.copy(userList = userList[0])) }
+                                    ?.let { userList ->
+                                        updateUiState(
+                                            uiState.value.copy(
+                                                genderList = userList[0].results,
+                                                error = ""
+                                            )
+                                        )
+                                    }
                             }
 
                             it.isFailure -> {
@@ -64,7 +78,7 @@ class UserViewModel @Inject constructor(private val userUseCase: UserUseCase) :
                                     ignoreCase = true
                                 )
                             }
-                            updateUiState(uiState.value.copy(genderList = list))
+                            updateUiState(uiState.value.copy(genderList = list, error = ""))
                         }
                 }
 
@@ -77,9 +91,8 @@ class UserViewModel @Inject constructor(private val userUseCase: UserUseCase) :
     }
 
     data class UserState(
-        val userList: Users? = null,
+        val genderList: List<User>? = listOf(),
         val error: String = "",
-        val genderList: List<User>? = listOf()
     )
 
     sealed class UserIntent {
