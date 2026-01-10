@@ -1,6 +1,7 @@
 package com.example.singleactivityapp.ui.screens
 
 import androidx.lifecycle.viewModelScope
+import com.example.singleactivityapp.data.newtwork.User
 import com.example.singleactivityapp.data.newtwork.Users
 import com.example.singleactivityapp.domain.UserUseCase
 import com.example.singleactivityapp.ui.screens.base.BaseViewModel
@@ -51,7 +52,36 @@ class UserViewModel @Inject constructor(private val userUseCase: UserUseCase) :
         }
     }
 
-    data class UserState(val userList: Users? = null, val error: String = "")
+    suspend fun getGenderListUser(gender: String = "female") {
+        userUseCase(5).collect {
+            when {
+                it.isSuccess -> {
+                    it.getOrNull()
+                        ?.let { userList ->
+                            val list = userList[0].results.filter { value ->
+                                value.user?.gender.equals(
+                                    gender,
+                                    ignoreCase = true
+                                )
+                            }
+                            updateUiState(uiState.value.copy(genderList = list))
+                        }
+                }
+
+                it.isFailure -> {
+                    updateUiState(uiState.value.copy(error = "Wrong Data"))
+                }
+            }
+
+        }
+    }
+
+    data class UserState(
+        val userList: Users? = null,
+        val error: String = "",
+        val genderList: List<User>? = listOf()
+    )
+
     sealed class UserIntent {
         data class IncreaseCount(val count: Int) : UserIntent()
     }

@@ -22,7 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.example.singleactivityapp.data.newtwork.User
-import com.example.singleactivityapp.data.newtwork.Users
 import com.example.singleactivityapp.ui.theme.Pink80
 import com.example.singleactivityapp.ui.theme.Purple80
 import com.example.singleactivityapp.ui.theme.SingleActivityAppTheme
@@ -50,7 +49,7 @@ fun AllGenderList(
                     viewModel.handleIntent(UserViewModel.UserIntent.IncreaseCount(clickedEvent.intValue))
                 }
         )
-        val list = result.value.userList
+        val list = result.value.userList?.results
         ShowingListOfUser(modifier = modifier, list, navigateToDetails)
     }
 }
@@ -58,7 +57,7 @@ fun AllGenderList(
 @Composable
 fun ShowingListOfUser(
     modifier: Modifier = Modifier,
-    userList: Users?,
+    userList: List<User>?,
     navigationToDetails: (User) -> Unit
 ) {
 
@@ -67,7 +66,7 @@ fun ShowingListOfUser(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        items(userList?.results ?: listOf()) { user ->
+        items(userList ?: listOf()) { user ->
             Column(
                 modifier = modifier
                     .fillMaxWidth()
