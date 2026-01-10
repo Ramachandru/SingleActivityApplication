@@ -1,8 +1,6 @@
 package com.example.singleactivityapp.data.newtwork
 
-import okhttp3.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiInterface {

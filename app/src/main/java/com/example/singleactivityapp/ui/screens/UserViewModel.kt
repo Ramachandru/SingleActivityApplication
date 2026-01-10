@@ -1,9 +1,9 @@
 package com.example.singleactivityapp.ui.screens
 
 import androidx.lifecycle.viewModelScope
-import com.example.singleactivityapp.data.newtwork.User
 import com.example.singleactivityapp.data.newtwork.Users
 import com.example.singleactivityapp.domain.UserUseCase
+import com.example.singleactivityapp.ui.screens.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -51,7 +51,7 @@ class UserViewModel @Inject constructor(private val userUseCase: UserUseCase) :
         }
     }
 
-    data class UserState(val userList: Users? =null , val error: String ="")
+    data class UserState(val userList: Users? = null, val error: String = "")
     sealed class UserIntent {
         data class IncreaseCount(val count: Int) : UserIntent()
     }
