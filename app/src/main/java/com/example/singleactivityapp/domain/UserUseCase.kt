@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class UserUseCase @Inject constructor(private val apiCall: ApiInterface) :
-    BaseUseCase<Int, Result<List<Users>>> {
+    BaseUseCase<Int, Flow<Result<List<Users>>>> {
     override suspend fun invoke(param: Int): Flow<Result<List<Users>>> = flow {
         val response = apiCall.getRandomUserResults(param)
         response?.let {
