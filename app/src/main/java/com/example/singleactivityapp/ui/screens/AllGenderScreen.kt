@@ -44,7 +44,7 @@ fun AllGenderList(
         AppToolBar("All Gender", R.drawable.male1)
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(20.dp)
+            modifier = Modifier.padding(10.dp)
         ) {
             Text(
                 text = "Increase ${clickedEvent.intValue}",
@@ -69,7 +69,7 @@ fun ShowingListOfUser(
 ) {
 
     LazyColumn(
-        modifier = Modifier.padding(top = 20.dp),
+        modifier = Modifier.padding(top = 10.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -84,15 +84,15 @@ fun ShowingListOfUser(
                     .padding(20.dp)) {
                 val userDta = user.user
                 Text(
-                    text = " ${userDta?.username}",
+                    text = "UserName :  ${userDta?.username}",
                     modifier = Modifier.padding(2.dp)
                 )
                 Text(
-                    text = " ${userDta?.gender} ",
+                    text = "Gender : ${userDta?.gender} ",
                     modifier = Modifier.padding(2.dp)
                 )
                 Text(
-                    text = " ${userDta?.phone}",
+                    text = "Phone : ${userDta?.phone}",
                     modifier = Modifier.padding(2.dp)
                 )
             }

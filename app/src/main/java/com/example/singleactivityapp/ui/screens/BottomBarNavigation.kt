@@ -66,7 +66,7 @@ fun BottomBarNavigation(navHostController: NavHostController) {
 @Composable
 fun AppToolBar(title: String, icon: Int?) {
     TopAppBar(title = {
-        Text(text = title, fontSize = 20.sp, modifier = Modifier.padding(3.dp))
+        Text(text = title, fontSize = 20.sp, modifier = Modifier.padding(start = 3.dp))
     }, navigationIcon = {
         Icon(
             painterResource(icon!!),

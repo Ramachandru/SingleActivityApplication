@@ -33,6 +33,7 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             val navBackStackEntry = navController.currentBackStackEntryAsState()
             val destination = navBackStackEntry.value?.destination
+
             SingleActivityAppTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
