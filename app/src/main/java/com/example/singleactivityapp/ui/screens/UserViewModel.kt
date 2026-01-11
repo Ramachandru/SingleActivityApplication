@@ -23,7 +23,7 @@ class UserViewModel @Inject constructor(private val userUseCase: UserUseCase) :
                         ?.let { userList ->
                             updateUiState(
                                 uiState.value.copy(
-                                    genderList = userList[0].results,
+                                    genderList = userList.results,
                                     error = ""
                                 )
                             )
@@ -49,7 +49,7 @@ class UserViewModel @Inject constructor(private val userUseCase: UserUseCase) :
                                     ?.let { userList ->
                                         updateUiState(
                                             uiState.value.copy(
-                                                genderList = userList[0].results,
+                                                genderList = userList.results,
                                                 error = ""
                                             )
                                         )
@@ -72,7 +72,7 @@ class UserViewModel @Inject constructor(private val userUseCase: UserUseCase) :
                 it.isSuccess -> {
                     it.getOrNull()
                         ?.let { userList ->
-                            val list = userList[0].results.filter { value ->
+                            val list = userList.results.filter { value ->
                                 value.user?.gender.equals(
                                     gender,
                                     ignoreCase = true
