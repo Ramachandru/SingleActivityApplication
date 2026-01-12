@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.example.singleactivityapp.R
-import com.example.singleactivityapp.data.newtwork.User
+import com.example.singleactivityapp.data.User
 import com.example.singleactivityapp.ui.theme.Pink80
 import com.example.singleactivityapp.ui.theme.Purple80
 import com.example.singleactivityapp.ui.theme.SingleActivityAppTheme

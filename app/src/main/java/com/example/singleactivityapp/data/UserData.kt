@@ -1,4 +1,4 @@
-package com.example.singleactivityapp.data.newtwork
+package com.example.singleactivityapp.data
 
 import kotlinx.serialization.Serializable
 

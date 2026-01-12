@@ -1,5 +1,6 @@
 package com.example.singleactivityapp.data.newtwork
 
+import com.example.singleactivityapp.data.Users
 import retrofit2.http.GET
 import retrofit2.http.Query
 

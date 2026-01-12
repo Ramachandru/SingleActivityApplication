@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.singleactivityapp.R
-import com.example.singleactivityapp.data.newtwork.User
+import com.example.singleactivityapp.data.User
 
 @Composable
 fun UserDetails(user: User) {

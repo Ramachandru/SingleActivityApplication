@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
 import androidx.savedstate.SavedState
-import com.example.singleactivityapp.data.newtwork.User
+import com.example.singleactivityapp.data.User
 import com.example.singleactivityapp.ui.screens.AllGenderList
 import com.example.singleactivityapp.ui.screens.FemaleListScreen
 import com.example.singleactivityapp.ui.screens.MaleListScreen

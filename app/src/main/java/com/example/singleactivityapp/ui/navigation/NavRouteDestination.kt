@@ -1,7 +1,7 @@
 package com.example.singleactivityapp.ui.navigation
 
 import com.example.singleactivityapp.R
-import com.example.singleactivityapp.data.newtwork.User
+import com.example.singleactivityapp.data.User
 import kotlinx.serialization.Serializable
 
 @Serializable
