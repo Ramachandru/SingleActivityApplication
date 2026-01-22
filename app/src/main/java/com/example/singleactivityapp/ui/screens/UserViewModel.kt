@@ -71,12 +71,11 @@ class UserViewModel @Inject constructor(private val userUseCase: UserUseCase) :
                 it.isSuccess -> {
                     it.getOrNull()
                         ?.let { userList ->
-                            val list = userList.results.filter { value ->
-                                value.user?.gender.equals(
-                                    gender,
-                                    ignoreCase = true
-                                )
-                            }
+                            val list = userList.results.separateGender(
+                                name = gender,
+                                genericData = { generic ->
+                                    generic.user?.gender
+                                })
                             updateUiState(uiState.value.copy(genderList = list, error = ""))
                         }
                 }
@@ -97,4 +96,8 @@ class UserViewModel @Inject constructor(private val userUseCase: UserUseCase) :
     sealed class UserIntent {
         data class IncreaseCount(val count: Int) : UserIntent()
     }
+}
+
+fun <T> List<T>.separateGender(name: String, genericData: (T) -> String?): List<T> {
+    return this.filter { genericData(it)?.equals(name, ignoreCase = true) == true }
 }
